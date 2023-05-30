@@ -4,43 +4,30 @@
 	exec 'source' '~/.config/nvim/pacotes.vim'
 	
 " Linguagens e tipos de arquivo
-	exec 'source' '~/.config/nvim/latex.vim'
-	exec 'source' '~/.config/nvim/csv.vim'
-	exec 'source' '~/.config/nvim/R.vim'
-	exec 'source' '~/.config/nvim/python.vim'
-	exec 'source' '~/.config/nvim/markdown.vim'
-	exec 'source' '~/.config/nvim/tmux.vim'
+	"exec 'source' '~/.config/nvim/linguagens/latex.vim'
+	exec 'source' '~/.config/nvim/linguagens/csv.vim'
+	"exec 'source' '~/.config/nvim/linguagens/R.vim'
+	"exec 'source' '~/.config/nvim/linguagens/python.vim'
+	"exec 'source' '~/.config/nvim/linguagens/markdown.vim'
+	"exec 'source' '~/.config/nvim/linguagens/tmux.vim'
 		
 " Vim básico (para mais opções, veja ":help option-list" e ":options")
-	" Genéricos
-		set hidden      " Posso me mover sem salvar buffers ocultos
-		set noautowrite " Não salva o buffer ao passar para o próximo
-		set mouse=a     " Me deixa usar o mouse sempre
-		"set backup     " faz backup do arquivo atual
-		
-	" Cores
+	 "Cores
 		colorscheme railscasts " Muda o esquema de cores.
 		
 	" Janelas
 	set splitbelow splitright
 	
-	" Fold
-		set foldignore=""       " por padrão, ignora linhas que começam com "#"
-		set foldcolumn=0        " coluna nonsense
-		set foldmethod=indent   " folds pela identação
-		set foldlevelstart=1    " nível dos folds quando abre o arquivo
-		"set foldlevelstart=100
-		
 	" Editor
 		" Número da linha
 			set number          " Coloca a régua de números à esquerda
 			"set relativenumber " Régua relativa
 			
 		" Quebra de linha
-			set textwidth=0 " Deixa as linhas terem o tamanho que elas quiserem (não quebra linhas muito longas em duas linhas diferentes). Essa linha, por exemplo, pode parecer duas, mas isso é só visual.
+			set textwidth=75 " O número de caracteres (colunas) de uma linha. Apesar de não ter efeito visível por outras opções, atua no gq{motion}
 			set wrap        " Quebra as linhas visualmente
 			set lbr         " Quebra as linhas longas nos espaços, não no meio da palavra (visualmente).
-			
+		
 		" Corretor ortográfico
 			set spelllang=pt_br,en " Corretor em português e inglês
 			"set spell           " Efetivamente liga o corretor
@@ -49,47 +36,46 @@
 			"set scrolloff=3 " Deixa n linhas acima ou abaixo do cursor na tela com zt ou zb
 			set confirm     " Abre um menu se eu fizer besteira
 			set formatoptions=qnlj "ler fo-table. Configura quebra de linha automática e outros
-			"set formatoptions-=tcro
 			
+	" Folds
+		set foldignore=""       " por padrão, ignora linhas que começam com "#"
+		set foldcolumn=0        " coluna nonsense
+		set foldmethod=indent   " folds pela identação
+		set foldlevelstart=1    " nível dos folds quando abre o arquivo
+		"set foldlevelstart=100
+		
 	" Identação e tabs
 		" Visuais
 			"set listchars=tab:\|-,space:* "Temporário para configurar identação
 			set listchars=tab:\|\          " Mostra linhas de identação
 			set list
 			
-		" Forma do tab (mantenha tabstop == shiftwidth)
+		" Forma do tab (manter tabstop == shiftwidth)
 			set noexpandtab  " Não substitui tabs por espaços
 			set tabstop=4    " Quantos espaços um tab deve ter?
 			set shiftwidth=4 " Espaços em um shift (tab a cada tabstop e espaços no resto)
 			" Adicionais
 			"set softtabstop=0 " se entendi bem, é um tabstop para o modo de inserção (0 usa tabstop) que opera os espaços
-			set smartindent    " indenta automáticamente de acordo com o tipo do arquivo
+			"set smartindent    " indenta automáticamente de acordo com o tipo do arquivo
 			" Não entendi
 			"set preserveindent " Preserva o estilo de indentação das demais linhas
 			"set smarttab       " Liga as tabs inteligentes (não entendi, mas ok)
 		
 	" Buscas
-		set incsearch  " Marca as buscas enquanto digito
 		set nohlsearch " Não marca as buscas depois q dei enter
 		set ignorecase " Busca não é case-sensitive
 		set smartcase  " Busca vira case-sensitive se tiver maiúscula NA BUSCA
 
-" Netrw
-	let g:netrw_banner = 0 "linhas no começo
-	let g:netrw_liststyle = 3 "Estilo da lista
-	"let g:netrw_browse_split = 4 " Gerencia como abre os arquivos
-	"let g:netrw_winsize = 20 " tamanho da janela
-	
 " Mapeamentos (não colocar comentários após o mapeamento)
 	"" Teclas-Lider ----
 		let mapleader="\\"
 		let maplocalleader=","
-
+	
 	"" Truques ----
-		" Usa textos como macros
-		nnoremap <leader>q "pdaW@p
-		" Copia para o control c
+		" Configurações do clipboard do sistema
 		vnoremap ++ "+y
+		nnoremap +p "+p
+		nnoremap +P "+P
 	
 	"" Alterando comportamento padrão ----
 		"nnoremap ~<Space> ~
@@ -130,26 +116,36 @@
 		nnoremap <silent> <leader>k :resize +3<CR>
 		nnoremap <silent> <leader>h :vertical resize -3<CR>
 		nnoremap <silent> <leader>l :vertical resize +3<CR>
+		" Corretor ortográfico
+		nnoremap <leader>s :set spell!<cr>
+		" Outros
+		vnoremap < <gv
+		vnoremap > >gv
+		"nnoremap ec :colorscheme 
 		
 	"" Editando o .vimrc ----
 		nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 		"nnoremap <leader>ee :E ~/.config/nvim<cr>
-		nnoremap <leader>sv :source $MYVIMRC<cr>
-		nnoremap <leader>s :set spell!<cr>
-
-	"" Escrevendo a partir de comandos ----
-		nnoremap <leader>d :put=strftime('%d/%m/%Y')<cr>
-		
+		nnoremap <leader>es :source $MYVIMRC<cr>
+	
 " Functions
 	function! RodaSeExiste(file)
 		if filereadable(expand(a:file))
 			exec 'source' a:file
 		endif
 	endfunction
-
+	
 	call RodaSeExiste(".config.vim")
 	call RodaSeExiste("../.config.vim")
 	call RodaSeExiste("../../.config.vim")
 
 " TODO
 	" Adicionar q quando salvo esse arquivo, ele se roda
+	" Tirar função para continuar comentários
+	" Cores
+	" Pacotes
+	" Linguagens
+	" Estudar treta de tab contra espaços
+		" https://github.com/zefei/vim-wintabs
+	" Estudar treta de buffers contra tabs
+		" https://www.youtube.com/watch?v=ZlyiNuxlkJY&list=PLRjzjpJ02WDMJOTsrdByXynk8h0ScMK9R&index=10
