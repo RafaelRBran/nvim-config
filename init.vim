@@ -4,12 +4,11 @@
 	exec 'source' '~/.config/nvim/pacotes.vim'
 	
 " Linguagens e tipos de arquivo
-	"exec 'source' '~/.config/nvim/linguagens/latex.vim'
 	exec 'source' '~/.config/nvim/linguagens/csv.vim'
-	"exec 'source' '~/.config/nvim/linguagens/R.vim'
-	"exec 'source' '~/.config/nvim/linguagens/python.vim'
-	"exec 'source' '~/.config/nvim/linguagens/markdown.vim'
-	"exec 'source' '~/.config/nvim/linguagens/tmux.vim'
+	exec 'source' '~/.config/nvim/linguagens/latex.vim'
+	exec 'source' '~/.config/nvim/linguagens/markdown.vim'
+	exec 'source' '~/.config/nvim/linguagens/R.vim'
+	exec 'source' '~/.config/nvim/linguagens/python.vim'
 		
 " Vim básico (para mais opções, veja ":help option-list" e ":options")
 	 "Cores
@@ -35,7 +34,8 @@
 		""" Outros
 			"set scrolloff=3 " Deixa n linhas acima ou abaixo do cursor na tela com zt ou zb
 			set confirm     " Abre um menu se eu fizer besteira
-			set formatoptions=qnlj "ler fo-table. Configura quebra de linha automática e outros
+			set formatoptions=jlnq "ler fo-table. Configura quebra de linha automática e outros
+			set formatoptions-=cro  "ler fo-table. Configura quebra de linha automática e outros
 			
 	" Folds
 		set foldignore=""       " por padrão, ignora linhas que começam com "#"
@@ -139,13 +139,10 @@
 	call RodaSeExiste("../.config.vim")
 	call RodaSeExiste("../../.config.vim")
 
+	augroup init_vim
+		autocmd!
+		autocmd BufWritePost init.vim :source $MYVIMRC
+	augroup END
+
 " TODO
-	" Adicionar q quando salvo esse arquivo, ele se roda
-	" Tirar função para continuar comentários
 	" Cores
-	" Pacotes
-	" Linguagens
-	" Estudar treta de tab contra espaços
-		" https://github.com/zefei/vim-wintabs
-	" Estudar treta de buffers contra tabs
-		" https://www.youtube.com/watch?v=ZlyiNuxlkJY&list=PLRjzjpJ02WDMJOTsrdByXynk8h0ScMK9R&index=10
