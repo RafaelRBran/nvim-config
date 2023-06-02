@@ -1,6 +1,5 @@
 " Arquivo de configurações específicas para R
 " Úteis
-
 		let g:quicktex_r = {
 			\'..' : "\<space>%>%\<space>",
 		\}

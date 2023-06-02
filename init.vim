@@ -7,8 +7,9 @@
 	exec 'source' '~/.config/nvim/linguagens/csv.vim'
 	exec 'source' '~/.config/nvim/linguagens/latex.vim'
 	exec 'source' '~/.config/nvim/linguagens/markdown.vim'
-	exec 'source' '~/.config/nvim/linguagens/R.vim'
 	exec 'source' '~/.config/nvim/linguagens/python.vim'
+	exec 'source' '~/.config/nvim/linguagens/R.vim'
+	exec 'source' '~/.config/nvim/linguagens/sql.vim'
 		
 " Vim básico (para mais opções, veja ":help option-list" e ":options")
 	 "Cores
@@ -142,6 +143,7 @@
 	augroup init_vim
 		autocmd!
 		autocmd BufWritePost init.vim :source $MYVIMRC
+		autocmd BufWritePost ~/Dropbox/dotfiles/nvim/linguagens/*.vim :source $MYVIMRC
 	augroup END
 
 " TODO
