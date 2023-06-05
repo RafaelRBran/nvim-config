@@ -11,7 +11,6 @@
 			Plug 'godlygeek/tabular'  " Alinha textos com :Tabularise \=
 			Plug 'brennier/quicktex'  " Defaults rápidos
 			"Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
-			Plug 'jsborjesson/vim-uppercase-sql'  " Maiúsculas no SQL
 		
 		" Navegação
 			Plug 'jeetsukumaran/vim-buffergator' " Abre lista de buffers com <leader>b
