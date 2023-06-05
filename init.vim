@@ -144,6 +144,7 @@
 		autocmd!
 		autocmd BufWritePost init.vim :source $MYVIMRC
 		autocmd BufWritePost ~/Dropbox/dotfiles/nvim/linguagens/*.vim :source $MYVIMRC
+		autocmd BufWritePost ~/Dropbox/dotfiles/nvim/pacotes.vim :source $MYVIMRC
 	augroup END
 
 " TODO

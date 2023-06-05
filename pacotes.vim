@@ -89,5 +89,8 @@
 	
 	" fugitive + gv.vim
 		nnoremap <leader>gg :w<cr>:G 
-		nnoremap <leader>gv :GV --branches .<cr>
+		nnoremap <leader>gs :w<cr>:G status<cr>
+		nnoremap <leader>ga :w<cr>:G add 
+		nnoremap <leader>gc :w<cr>:G commit<cr>
+		nnoremap <leader>gl :GV --branches .<cr>
 	
