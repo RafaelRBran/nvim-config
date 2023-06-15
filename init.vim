@@ -48,7 +48,7 @@
 	" Identação e tabs
 		" Visuais
 			"set listchars=tab:\|-,space:* "Temporário para configurar identação
-			set listchars=tab:\|\          " Mostra linhas de identação
+			set listchars=tab:\|\ ,leadmultispace:\|... " Mostra linhas de identação
 			set list
 			
 		" Forma do tab (manter tabstop == shiftwidth)
@@ -104,6 +104,7 @@
 	"" Simplificando operações ----
 		" Folds
 		nnoremap <Space> za
+		nnoremap ' `
 		" Janelas
 		nnoremap <C-h> <C-w>h
 		nnoremap <C-j> <C-w>j
