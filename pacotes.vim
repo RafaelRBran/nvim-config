@@ -15,6 +15,7 @@
 		" Navegação
 			Plug 'jeetsukumaran/vim-buffergator' " Abre lista de buffers com <leader>b
 			Plug 'scrooloose/nerdtree'           " Explorador de arquivos
+			Plug 'dhruvasagar/vim-zoom'          " Explorador de arquivos
 		
 		" Aparência
 			" Barra
@@ -94,3 +95,5 @@
 		nnoremap <leader>gc :w<cr>:G commit<cr>
 		nnoremap <leader>gl :GV --branches .<cr>
 	
+	" vim-zoom
+		nnoremap <leader>z <Plug>(zoom-toggle)

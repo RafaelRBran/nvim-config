@@ -118,6 +118,7 @@
 		nnoremap <silent> <leader>k :resize +3<CR>
 		nnoremap <silent> <leader>h :vertical resize -3<CR>
 		nnoremap <silent> <leader>l :vertical resize +3<CR>
+		nnoremap <leader>z :<C-u>call <SID>zoom_toggle()<CR>
 		" Corretor ortográfico
 		nnoremap <leader>s :set spell!<cr>
 		" Outros
@@ -134,6 +135,21 @@
 	function! RodaSeExiste(file)
 		if filereadable(expand(a:file))
 			exec 'source' a:file
+		endif
+	endfunction
+	
+	function! s:zoom_toggle() abort
+		if 1 == winnr('$')
+			return
+		endif
+		let restore_cmd = winrestcmd()
+		wincmd |
+		wincmd _
+		" If the layout did not change, it's a toggle (un-zoom).
+		if restore_cmd ==# winrestcmd()
+			exe t:zoom_restore
+		else
+			let t:zoom_restore = restore_cmd
 		endif
 	endfunction
 	
